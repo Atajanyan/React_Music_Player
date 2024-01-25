@@ -1,38 +1,102 @@
-.App {
+.Songs{
+  font-size: 100px;
+  font-family: sans-serif;
+  color: blueviolet;
   text-align: center;
+  margin: 10px;
+}
+.bar{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+button{
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.songList{
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  background-color: rgb(188, 152, 221);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.titles{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+}
+
+span{
+  width: 80px;
+}
+
+.song{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px;
+  align-items: center;
+  border-radius: 20px;
+  background-color: whitesmoke;
+  font-family: sans-serif;
+}
+
+.song:hover{
+  background-color: rgb(88, 12, 158);
+  color: white;
+  cursor: pointer;
+}
+
+.song img{
+  width: 40px;
+}
+
+.song p,b{
+  width: 200px;
+}
+
+.loading{
+  width: 200px;
+}
+
+.songImages{
+  display: flex;
+  gap: 10px;
+}
+
+.error{
+  color: red;
+  font-family: sans-serif;
+}
+
+.search{
+  border-radius: 20px;
+  padding: 8px;
+}
+
+.bar div{
+  display: flex;
+  gap: 10px;
+}
+
+.container{
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.uploadButton{
+  width: 200px;
+  background-color: green;
+  padding: 10px;
+  border-radius: 20px;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  font-size: 25px;
 }
