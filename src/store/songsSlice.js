@@ -1,6 +1,27 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { TrackList } from '../assets/tracksList';
 const audio = new Audio()
+
+
+export const handleUploadSongs = createAsyncThunk(
+  'songs/handleUploadSongs',
+  async function(_,{rejectWithValue,dispatch}){
+    try {
+      const response = await fetch('API')
+      
+      if(!response.ok){
+        throw new Error('Can`t add song')
+      }
+
+      setTimeout(() => {
+        dispatch(addSongs())
+      }, 2000);
+      
+    } catch (error) {
+        return rejectWithValue(error.message)
+    }
+  }
+)
 
 const songsSlice = createSlice({
   name: 'songs',
@@ -53,6 +74,28 @@ const songsSlice = createSlice({
     },
   },
 
+  extraReducers:(builder)=>{
+    builder
+    .addCase(handleUploadSongs.pending,(state)=>{
+      // Simulate upload process with a timeout
+      console.log(`Uploading ${state.selectedFile}...`);
+
+      state.status = 'loading';
+      state.error = null
+    })
+    .addCase(handleUploadSongs.fulfilled,(state,action)=>{
+      let name = state.selectedFile
+      setTimeout(() => {
+        // Update state or handle the successful upload
+        console.log(`${name} uploaded successfully!`);
+      }, 2000);
+
+    })
+    .addCase(handleUploadSongs.rejected,(state,action)=>{
+      state.status = 'rejected'
+      state.error = action.payload
+    })
+  }
 });
 
 export const { addSongs,handleToggleAudio,handleFileChange,handleSearch } = songsSlice.actions;

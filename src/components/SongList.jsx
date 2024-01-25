@@ -39,7 +39,8 @@ function SongList() {
           <SongRow key={song.id} song={song}/>
           ))}
       </div>
-          
+        {status === 'loading' && <img className='loading' src={loading} alt=''/>}
+        {error && <h2 className={error && 'error'}>Error: {error}</h2>}
     </div>
   );
 }
